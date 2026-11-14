@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="meuApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade AngularJS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="MainController">
+
+  <header>
+    <h1>Atividade AngularJS</h1>
+    <meu-dropdown titulo="Idioma: {{ idioma }}" opcoes="opcoesIdioma"></meu-dropdown>
+  </header>
+
+  <main class="grade">
+
+    <section class="card">
+      <h2>Perguntas Frequentes</h2>
+      <meu-accordion itens="faq"></meu-accordion>
+    </section>
+
+    <section class="card">
+      <h2>Produtos</h2>
+      <ul>
+        <li ng-repeat="produto in produtos">
+          {{ produto.nome | uppercase }} - {{ produto.preco | reais }}
+        </li>
+      </ul>
+      <minha-paginacao total-paginas="totalPaginas"
+                       pagina-atual="paginaAtual"
+                       ao-mudar="mudarPagina(pagina)">
+      </minha-paginacao>
+    </section>
+
+    <section class="card">
+      <h2>Upload de Arquivo</h2>
+      <minha-barra-progresso valor="progresso"></minha-barra-progresso>
+      <button ng-click="iniciarUpload()">Iniciar upload</button>
+      <p>Ou ajuste manualmente:</p>
+      <input type="range" min="0" max="100" ng-model="progresso" ng-change="verificarProgresso()">
+    </section>
+
+    <section class="card">
+      <h2>Perfil do Usuário</h2>
+      <minhas-abas abas="abas"></minhas-abas>
+    </section>
+
+    <section class="card">
+      <h2>Notificações</h2>
+      <button ng-click="salvar()">Salvar</button>
+      <button ng-click="salvarComErro()">Salvar com erro</button>
+    </section>
+
+  </main>
+
+  <meu-toast></meu-toast>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services/dadosService.js"></script>
+  <script src="js/services/toastService.js"></script>
+  <script src="js/filters/filtros.js"></script>
+  <script src="js/directives/accordion.js"></script>
+  <script src="js/directives/pagination.js"></script>
+  <script src="js/directives/progressBar.js"></script>
+  <script src="js/directives/tabs.js"></script>
+  <script src="js/directives/dropdown.js"></script>
+  <script src="js/directives/toast.js"></script>
+  <script src="js/controllers/mainController.js"></script>
+</body>
+</html>
