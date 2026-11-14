@@ -169,3 +169,14 @@ input[type="range"] {
 .info {
   background: #2196f3;
 }
+
+footer {
+  padding: 16px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
